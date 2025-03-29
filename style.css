@@ -1,0 +1,232 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Corpo */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+/* Cabeçalho */
+.header {
+    display: flex;
+    justify-content: space-between; /* Espaço entre logo e menu */
+    align-items: center; /* Centraliza verticalmente */
+    padding: 0 20px; /* Espaçamento horizontal */
+    background-color: #000; /* Fundo preto */
+    height: 100px; /* Altura fixa */
+}
+
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 15px; /* Espaçamento entre os ícones */
+}
+
+.social-icons a {
+    text-decoration: none; /* Remove sublinhado */
+    font-size: 24px; /* Tamanho dos ícones */
+    color: #fff; /* Cor branca padrão */
+    transition: color 0.3s ease; /* Animação suave no hover */
+}
+
+.social-icons a:hover {
+    color: #bca0f6; /* Cor azul ao passar o mouse */
+}
+
+.logo {
+    width: 200px; /* ajustar o tamanho */
+    display: block; /* centralizar */
+    margin: 0 auto; /* centralizar horizontalmente */
+
+}
+
+    .header .item {
+        background-color: transparent; /* remove qualquer cor de fundo */
+
+}
+
+.navbar a {
+    margin-right: 15px;
+    color: #fff;
+    text-decoration: none;
+}
+
+/* Seção Principal */
+.hero {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 50px 10px;
+    background-color: #fff; /* Fundo branco */
+}
+
+.hero-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 1000px; /* Largura máxima da seção */
+    width: 100%;
+}
+
+/* Portfólio */
+.portfolio {
+    background-color: #f0f0f0; /* Cor cinza */
+    padding: 60px 10px; /* Espaçamento interno */
+    margin-top: -54px; /* Remove qualquer espaço entre as seções */
+}
+
+.portfolio h2 {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 40px;
+    color: #333;
+}
+
+/* Layout dos itens */
+.portfolio-items {
+    display: flex;
+    justify-content: center;
+    gap: 30px; /* Espaçamento entre os itens */
+    flex-wrap: wrap; /* Permite quebra de linha em telas menores */
+}
+
+/* Estilo individual dos itens */
+.item {
+    background-color: #fff; /* Fundo branco dos cartões */
+    border-radius: 15px; /* Cantos arredondados */
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    padding: 20px;
+    text-align: center;
+    width: 300px; /* Largura fixa dos cartões */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Animação de hover */
+}
+
+.item:hover {
+    transform: translateY(-10px); /* Eleva o cartão ao passar o mouse */
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2); /* Intensifica a sombra no hover */
+}
+
+/* Estilo das imagens */
+.item img {
+    width: 100%; /* Imagem ocupa toda a largura do cartão */
+    border-radius: 10px; /* Cantos arredondados nas imagens */
+}
+
+/* Títulos dos projetos */
+.item h3 {
+    font-size: 20px;
+    margin-top: 15px;
+    color: #333;
+}
+
+/* Descrição dos projetos */
+.item p {
+    font-size: 14px;
+    color: #666;
+}
+
+/* Botões para ver projetos */
+.btn {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 10px 20px;
+    background-color: #885edb; /* Cor azul moderna */
+    color: #fff; /* Texto branco */
+    text-decoration: none; /* Remove sublinhado */
+    border-radius: 5px; /* Cantos arredondados no botão */
+    transition: background-color 0.3s ease; /* Animação no hover */
+}
+
+.btn:hover {
+    background-color: #602fc2; /* Azul mais escuro no hover */
+}
+
+.portfolio-items {
+    display: flex;
+    justify-content: center;
+    gap: 20px; /* Espaçamento entre os itens */
+    flex-wrap: wrap; /* Permite quebra de linha em telas menores */
+}
+
+.item {
+    background-color: transparent;
+    border-radius: 10px; /* Cantos arredondados */
+    padding: 20px;
+    text-align: center;
+    width: 300px; /* Largura fixa dos itens */
+
+}
+
+.item {
+    background-color: #DFDBE1;
+    padding: 20px;
+}
+
+.item img {
+    width: 100%; /* Imagem ocupa toda a largura do item */
+    border-radius: 10px; /* Cantos arredondados nas imagens */
+}
+
+/* Seção Sobre */
+.about-section {
+    padding: 40px;
+    text-align: center;
+}
+
+.about-section h1 {
+    font-size: 28px;
+}
+
+.about-section p {
+    font-size: 16px;
+    color: #666;
+}
+
+/* Seção Contato */
+.contact-section {
+    padding: 40px;
+}
+
+.contact-section h1 {
+    text-align: center;
+}
+
+.contact-form {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.contact-form label {
+    display: block;
+    margin-top: 15px;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+}
+
+.contact-form button {
+    margin-top: 20px;
+}
+
+/* Rodapé */
+.footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #000; /* Fundo preto */
+    color: #fff; /* Texto branco */
+}
+
+.footer p {
+    margin-bottom: 10px;
+}
