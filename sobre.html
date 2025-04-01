@@ -1,71 +1,127 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <head>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    </head>
+    <link rel="icon" type="image/x-icon" href="assets/kuromi.png">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sobre mim</title>
+    <title>Sâmia | Sobre</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Pixelify+Sans&family=VT323&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-    <!-- Cabeçalho -->
-    <header class="header">
-        <div class="logo-container">
-            <img src="assets/logo-portfolio-white.png" alt="Logo do Portfólio" class="logo">
+    <div class="game-container">
+        <!-- Elementos de cenário -->
+        <div class="sky">
+            <div class="cloud cloud1"></div>
+            <div class="cloud cloud2"></div>
+            <div class="cloud cloud3"></div>
         </div>
-
-        <div class="social-icons">
-            <a href="https://steamcommunity.com/id/miaxhan" target="_blank" class="fa fa-steam"></a>
-            <a href="https://www.instagram.com/miaelfk/" target="_blank" class="fa fa-instagram"></a>
-            <a href="https://www.linkedin.com/in/samiaelfakihfranca/" target="_blank" class="fa fa-linkedin"></a>
-            <a href="https://github.com/miaelfk" target="_blank" class="fa fa-github"></a>
-        </div>
+        <div class="ground"></div>
         
-        <nav class="navbar">
-            <a href="index.html">Início</a>
-            <a href="sobre.html">Sobre mim</a>
-            <a href="contato.html">Contato</a>
-            
-        </nav>
-    </header>
+        <!-- Cabeçalho com navegação -->
+        <header class="game-hud">
+            <div class="player-stats">
+                <div class="player-name">Sâmia</div>
+                <div class="player-title">Desenvolvedora</div>
+                <div class="player-level">Level 25</div>
+            </div>
+            <nav class="menu-icons">
+                <a href="index.html" class="menu-icon">
+                    <i class="fas fa-home"></i>
+                    <span>Início</span>
+                </a>
+                <a href="sobre.html" class="menu-icon active">
+                    <i class="fas fa-user"></i>
+                    <span>Sobre</span>
+                </a>
+                <a href="portfolio.html" class="menu-icon">
+                    <i class="fas fa-briefcase"></i>
+                    <span>Projetos</span>
+                </a>
+                <a href="contato.html" class="menu-icon">
+                    <i class="fas fa-envelope"></i>
+                    <span>Contato</span>
+                </a>
+            </nav>
+        </header>
+        
+        <!-- Conteúdo da página Sobre -->
+        <main>
+            <section id="sobre" class="about-section">
+                <h2 class="section-title">Quem sou eu?</h2>
+                
+                <div class="about-content">
+                    <div class="about-text">
+                        <p>Oi! Eu sou a Sâmia, alguém que vê a vida como uma grande aventura cheia de histórias para contar. Sou apaixonada por aprender, criar e explorar tudo o que o mundo tem a oferecer—seja por meio dos livros que devoro, dos games que me envolvem ou das experiências que me transformam.
 
-    <!-- Seção Sobre Mim -->
-<section class="about-section">
-    <!-- Frase centralizada acima -->
-    <div class="about-title">
-        <h1>Eu sou...</h1>
+                            Tenho um coração gigante pela minha família, e nada me faz mais feliz do que estar cercada por quem amo. Ser mãe é o presente mais bonito que a vida me deu, e cada momento ao lado do meu filho é uma nova descoberta. Também sou esposa e alguém que acredita no poder das conexões verdadeiras.
+                            
+                            Profissionalmente, sou movida por desafios e pelo desejo constante de evolução. Estou trilhando meu caminho na tecnologia, estudando Engenharia da Computação e me especializando para atuar com inteligência artificial. Adoro projetos inovadores e mergulho de cabeça em tudo o que desperta minha curiosidade.
+                            
+                            Além disso, sou uma pessoa que valoriza o cuidado com os detalhes. Amo conhecer novas gastronomias e tenho um fraco especial por padarias e cafeterias aconchegantes.
+                            
+                            Se tivesse que me descrever em uma frase, seria: alguém que sonha grande, ama intensamente e vive cada dia com propósito.
+                            
+                            Prazer em te conhecer!</p>
+                    </div>
+                    
+                    <div class="skills-section">
+                        <h3>Ferramentas e tecnologias</h3>
+                            <div class="skills-grid">
+                                <div class="skill-item">
+                                    <i class="fab fa-java"></i>
+                                    <span>Java</span>
+                                </div>
+                            <div class="skill-item">
+                                <i class="fab fa-css3-alt"></i>
+                                <span>CSS3</span>
+                            </div>
+                            <div class="skill-item">
+                                <i class="fab fa-js"></i>
+                                <span>JavaScript</span>
+                            </div>
+                            <div class="skill-item">
+                                <i class="fab fa-python"></i>
+                                <span>Python</span>
+                            </div>
+                            <div class="skill-item">
+                                <i class="fas fa-database"></i>
+                                <span>SQL</span>
+                            </div>
+                            <div class="skill-item">
+                                <i class="fab fa-html5"></i>
+                                <span>HTML5</span>
+                            </div>
+                                <div class="skill-item">
+                                    <i class="fab fa-github"></i>
+                                    <span>Github</span>
+                                </div>
+                            <div class="skill-item">
+                                <i class="fab fa-git-alt"></i>
+                                <span>Git</span>
+                                <div class="skills-grid">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+        
+        <!-- Rodapé -->
+    <footer class="game-footer">
+        <p>&copy; 2025 | Sâmia E. F. França</p>
+    
+    <!-- Redes Sociais -->
+    <div class="social-media">
+        <a href="https://www.instagram.com/miaelfk/" aria-label="Siga-me no Instagram" class="social-icon" target="_blank" rel="noopener noreferrer">
+            <i class="fab fa-instagram"></i>
+        </a>
+        <a href="https://www.linkedin.com/in/samiaelfakihfranca/" aria-label="Conecte-se comigo no LinkedIn" class="social-icon" target="_blank" rel="noopener noreferrer">
+            <i class="fab fa-linkedin-in"></i>
+        </a>
+        <a href="https://github.com/miaelfk" aria-label="Veja meus projetos no GitHub" class="social-icon" target="_blank" rel="noopener noreferrer">
+            <i class="fab fa-github"></i>
+        </a>
     </div>
-
-    <!-- Conteúdo principal -->
-    <div class="about-content">
-        <!-- Texto à esquerda -->
-        <div class="about-left">
-            <h1>Sâ(mia)</h1>
-            <p>Sou uma pessoa apaixonada pela vida e pelos laços que construo. Minha maior alegria é estar com minha família. Amo viajar e experimentar novas gastronomias, além de ser uma leitora dedicada – meus favoritos: Duna, Saboroso Cadáver e Suicidas. Também adoro games e alguns dos meus favoritos são Detroit: Become Human, Resident Evil e Stardew Valley. E, claro, sou fã dos personagens da Sanrio, especialmente da Kuromi. Minhas animações favoritas são Solo Leveling e Invencível.</p>
-        </div>
-
-        <!-- Vídeo centralizado -->
-        <div class="video-container">
-            <video width="600" autoplay loop muted>
-                <source src="assets/about me.mp4" type="video/mp4">
-                Seu navegador não suporta vídeos HTML5. <a href="assets/about me.mp4">Clique aqui para assistir ao vídeo.</a>
-            </video>
-        </div>
-
-        <!-- Texto à direita -->
-        <div class="about-right">
-            <h1>&lt;Desenvolvedora&gt;</h1>
-            <p>Profissionalmente, sou uma entusiasta da tecnologia e estou construindo meu caminho para atuar como desenvolvedora de software. Estudo Engenharia da Computação e desenvolvo projetos no dia a dia que fortalecem minhas habilidades técnicas e criativas. Meu foco é me especializar e atuar com dados/inteligência artificial, por isso me dedico intensamente no que faço, pois quero realizar meu trabalho sempre com excelência. Determinação e aprendizado constante são o que me movem, e estou sempre pronta para alcançar meus objetivos.</p>
-        </div>
-    </div>
-</section>
-
-    <!-- Rodapé -->
-    <footer class="footer">
-        © 2025 | Com 💜 Sâmia França
-    </footer>
-</body>
-</html>
+</footer>

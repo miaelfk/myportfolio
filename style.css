@@ -1,298 +1,837 @@
-/* Reset básico */
+/* Resetando estilos */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* Corpo */
+/* Variáveis de cores inspiradas em Fields of Mistria */
+:root {
+    --primary: #8a5fdb;
+    --primary-light: #bca0f6;
+    --primary-dark: #602fc2;
+    --secondary: #f89acd;
+    --secondary-light: #ffcae3;
+    --text-dark: #493657;
+    --text-light: #ffffff;
+    --bg-light: #fdf8ff;
+    --bg-dark: #301b47;
+    --accent1: #7bc9a3;
+    --accent2: #ffca85;
+    --accent3: #ff8989;
+    --outline: #271533;
+    --shadow: rgba(0, 0, 0, 0.2);
+}
+
+/* Fontes personalizadas */
+@font-face {
+    font-family: 'PixelFont';
+    src: url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+}
+
+/* Estilo base */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f9f9f9;
-    color: #333;
+    font-family: 'Pixelify Sans', 'VT323', monospace;
+    color: var(--text-dark);
+    background-color: var(--bg-light);
+    overflow-x: hidden;
+    cursor: url('https://i.ibb.co/kQsKfbV/cursor.png'), auto;
 }
 
-/* Cabeçalho */
-.header {
-    display: flex;
-    justify-content: space-between; /* espaço entre logo e menu */
-    align-items: center; /* centralizar verticalmente */
-    padding: 0 20px; /* espaçamento horizontal */
-    background-color: #000; /* fundo preto */
-    height: 100px; /* altura fixa */
-}
-
-/* customização do cursor - kuromi */
-body {
-    cursor: url('assets/cursor.png'), auto; /* Aplica a imagem como cursor */
-}
-
-.social-icons {
-    display: flex;
-    justify-content: center;
-    gap: 15px; /* Espaçamento entre os ícones */
-}
-
-.social-icons a {
-    text-decoration: none; /* Remove sublinhado */
-    font-size: 24px; /* Tamanho dos ícones */
-    color: #fff; /* Cor branca padrão */
-    transition: color 0.3s ease; /* Animação suave no hover */
-}
-
-.social-icons a:hover {
-    color: #bca0f6; /* Cor azul ao passar o mouse */
-}
-
-.logo {
-    width: 200px; /* ajustar o tamanho */
-    display: block; /* centralizar */
-    margin: 0 auto; /* centralizar horizontalmente */
-
-}
-
-    .header .item {
-        background-color: transparent; /* remove qualquer cor de fundo */
-
-}
-
-.navbar a {
-    margin-right: 15px;
-    color: #fff;
-    text-decoration: none;
-}
-
-/* Seção Principal */
-.hero {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 50px 10px;
-    background-color: #fff; /* Fundo branco */
-}
-
-.hero-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    max-width: 1000px; /* Largura máxima da seção */
+/* Container principal do jogo */
+.game-container {
+    position: relative;
     width: 100%;
+    min-height: 100vh;
+    overflow: hidden;
 }
 
-/* Portfólio */
-.portfolio {
-    background-color: #f0f0f0; /* Cor cinza */
-    padding: 60px 10px; /* Espaçamento interno */
-    margin-top: -54px; /* Remove qualquer espaço entre as seções */
+/* Elementos de cenário */
+.sky {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 40vh;
+    background: linear-gradient(to bottom, #9db8ff, #c9dfff);
+    z-index: -2;
 }
 
-.portfolio h2 {
-    text-align: center;
-    font-size: 24px;
-    margin-bottom: 40px;
-    color: #333;
+.cloud {
+    position: absolute;
+    background-image: url('assets/nuvem.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 200px;
+    height: 80px;
+    opacity: 0.8;
+    animation: cloudFloat linear infinite;
 }
 
-/* Layout dos itens */
-.portfolio-items {
+.cloud1 {
+    top: 20%;
+    animation-duration: 30s;
+    width: 150px;
+    height: 90px;
+}
+
+.cloud2 {
+    top: 40%;
+    left: 40%;
+    animation-duration: 40s;
+    width: 120px;
+    height: 72px;
+}
+
+.cloud3 {
+    top: 10%;
+    left: 70%;
+    animation-duration: 40s;
+    width: 140px;
+    height: 84px;
+}
+
+@keyframes cloudFloat {
+    0% {
+        left: -150px;
+    }
+    100% {
+        left: 100%;
+    }
+}
+
+.ground {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 60vh;
+    background: linear-gradient(to bottom, #a9de8b, #88c26a);
+    z-index: -1;
+}
+
+/* Interface de jogo (HUD) */
+.game-hud {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
     display: flex;
-    justify-content: center;
-    gap: 30px; /* Espaçamento entre os itens */
-    flex-wrap: wrap; /* Permite quebra de linha em telas menores */
+    justify-content: space-between;
+    padding: 15px;
+    background-color: rgba(40, 20, 60, 0.8);
+    border-bottom: 4px solid var(--outline);
+    color: var(--text-light);
+    z-index: 100;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 0.7rem;
 }
 
-/* Estilo individual dos itens */
-.item {
-    background-color: #fff; /* Fundo branco dos cartões */
-    border-radius: 15px; /* Cantos arredondados */
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1); /* Sombra suave */
-    padding: 20px;
+.player-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.player-name {
+    font-size: 1rem;
+    color: var(--accent2);
+}
+
+.player-title {
+    font-size: 0.6rem;
+    color: var(--text-light);
+}
+
+.player-level {
+    font-size: 0.7rem;
+    color: var(--accent1);
+}
+
+.menu-icons {
+    display: flex;
+    gap: 20px;
+}
+
+.menu-icon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: url('assets/arqueira.gif'), pointer;
+    padding: 5px 10px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    color: var(--text-light);
+}
+
+.menu-icon:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    transform: translateY(-3px);
+}
+
+.menu-icon.active {
+    background-color: var(--primary-light);
+    color: var(--bg-dark);
+}
+
+#characters-container {
+    display: flex; /* Exibe os elementos em linha */
+    flex-wrap: wrap; /* Permite que eles quebrem linha se necessário */
+    gap: 20px; /* Espaçamento entre os cards */
+    justify-content: center; /* Centraliza os cards no container */
+    margin-bottom: 20px;
+    margin-top: -55px;
+  }
+
+  .character-card {
+    width: 150px; /* Define uma largura fixa para os cards */
+    border: 1px solid var(--outline);
+    border-radius: 8px;
+    padding: 10px;
     text-align: center;
-    width: 300px; /* Largura fixa dos cartões */
-    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Animação de hover */
+    background-color: var(--bg-light);
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .character-card img {
+    width: 100px;
+    height: auto;
+    margin-bottom: 20px;
+  }
+  
+  .character-card h3 {
+    margin-bottom: 20px;
+    font-size: 1rem;
+    color: var(--primary-dark);
+  }
+  
+  .character-card button {
+    background-color: var(--primary);
+    color: var(--text-light);
+    padding: 8px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .character-card button:hover {
+    background-color: var(--primary-dark);
+  }
+
+  .character-card p,
+  .character-card h3 {
+    display: none; /* Oculta as descrições inicialmente */
+    text-align: center;
+  }
+  
+  .selected-character {
+    display: flex;
+    flex-direction: column; /* Alterado para column para empilhar os elementos */
+    align-items: center; /* Centraliza os itens horizontalmente */
+    gap: 10px;
+    margin: 15px auto;
+    background-color: rgba(255, 255, 255, 0.7);
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 615px;
 }
 
-.item:hover {
-    transform: translateY(-10px); /* Eleva o cartão ao passar o mouse */
-    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2); /* Intensifica a sombra no hover */
+.character-info {
+    display: flex;
+    flex-direction: column;
+    text-align: center; /* Centraliza o texto */
+    width: 100%; /* Ocupa toda a largura disponível */
+    font-size: 1rem;
+    line-height: 1.4;
 }
 
-/* Estilo das imagens */
-.item img {
-    width: 100%; /* Imagem ocupa toda a largura do cartão */
-    border-radius: 10px; /* Cantos arredondados nas imagens */
+.character-info h3 {
+    font-size: 1.5rem;
+    color: var(--primary-dark);
+    margin-bottom: 10px;
+    width: 100%; /* Garante que o título ocupe toda a largura */
 }
 
-/* Títulos dos projetos */
-.item h3 {
-    font-size: 20px;
+.character-info p {
+    margin-bottom: 15px;
+    width: 100%; /* Garante que o subtítulo ocupe toda a largura */
+}
+
+.character-info h4 {
+    font-size: 1.2rem;
+    color: var(--primary-dark);
+    margin-top: 10px;
+    margin-bottom: 8px;
+    width: 100%; /* Garante que o título das habilidades ocupe toda a largura */
+}
+
+/* Adicione esta classe para listar as habilidades */
+.skills-list {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    padding-left: 20px;
+}
+
+.skills-list li {
+    margin-bottom: 5px;
+}
+
+/* Ajustar espaço entre os botões */
+#characters-container {
+    margin-bottom: 15px;
+}
+
+.cta-buttons {
     margin-top: 15px;
-    color: #333;
-}
-
-/* Descrição dos projetos */
-.item p {
-    font-size: 14px;
-    color: #666;
-}
-
-/* Botões para ver projetos */
-.btn {
-    display: inline-block;
-    margin-top: 15px;
-    padding: 10px 20px;
-    background-color: #885edb; /* Cor azul moderna */
-    color: #fff; /* Texto branco */
-    text-decoration: none; /* Remove sublinhado */
-    border-radius: 5px; /* Cantos arredondados no botão */
-    transition: background-color 0.3s ease; /* Animação no hover */
-}
-
-.btn:hover {
-    background-color: #602fc2; /* Azul mais escuro no hover */
-}
-
-.portfolio-items {
-    display: flex;
-    justify-content: center;
-    gap: 20px; /* Espaçamento entre os itens */
-    flex-wrap: wrap; /* Permite quebra de linha em telas menores */
-}
-
-.item {
-    background-color: transparent;
-    border-radius: 10px; /* Cantos arredondados */
-    padding: 20px;
-    text-align: center;
-    width: 300px; /* Largura fixa dos itens */
-
-}
-
-.item {
-    background-color: #DFDBE1;
-    padding: 20px;
-}
-
-.item img {
-    width: 100%; /* Imagem ocupa toda a largura do item */
-    border-radius: 10px; /* Cantos arredondados nas imagens */
-}
-
-/* Título Centralizado */
-.center-title {
-    text-align: center;
-    margin: 40px 0; /* Espaçamento acima e abaixo */
-}
-
-.center-title h1 {
-    font-size: 36px;
-    color: #333;
-}
-
-/* Seção Sobre Mim */
-.about-section {
-    padding: 40px;
-}
-
-/* Frase centralizada acima */
-.about-title {
-    text-align: center;
-    margin-bottom: 40px; /* Espaçamento abaixo da frase */
-}
-
-.about-title h1 {
-    font-size: 36px; /* Tamanho grande para destaque */
-    color: #000; /* Cor do texto */
-}
-
-/* Conteúdo principal */
-.about-content {
-    display: flex;
-    align-items: center; /* Centraliza verticalmente os elementos */
-    justify-content: space-between; /* Espaça os textos e o vídeo */
-    gap: 40px; /* Espaçamento entre os elementos (texto e vídeo) */
-}
-
-/* Texto à esquerda e à direita */
-.about-left,
-.about-right {
-    flex: 1; /* Divide o espaço igualmente */
-}
-
-.about-left h1,
-.about-right h1 {
-    font-size: 36px; /* Tamanho grande para os títulos */
-    margin-bottom: 10px; /* Espaço abaixo dos títulos principais */
-    color: #bca0f6;
-}
-
-.about-left p,
-.about-right p {
-    font-size: 16px; /* Subtítulos menores */
-}
-
-/* Vídeo centralizado */
-.video-container {
-    flex-shrink: 0; /* Garante que o vídeo não seja redimensionado */
-}
-
-video {
-    border-radius: 10px; /* Cantos arredondados no vídeo */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra suave ao redor do vídeo */
-}
-
-/* Seção Contato */
-.contact-section {
-    padding: 40px;
-    text-align: center;
-}
-
-.contact-section h1 {
-    font-size: 28px;
     margin-bottom: 20px;
 }
 
-.contact-info {
+/* Reduzir espaço entre o título e o conteúdo */
+.game-container h2 {
+    margin-bottom: 15px;
+}
+
+  
+/* Conteúdo principal */
+main {
+    padding-top: 74px; /* Espaço para o HUD */
+    min-height: calc(100vh - 80px);
+    padding-bottom: 40px; /* Espaço para o rodapé */
+}
+
+/* Seções principais */
+section {
+    padding: 60px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.section-title {
+    font-size: 2rem;
+    color: var(--primary-dark);
+    text-align: left;
+    margin-bottom: 20px;
+    width: 100%;
+    display: block;
+}
+
+.section-subtitle {
+    font-size: 1.2rem;
+    color: var(--text-dark);
+    text-align: left;
+    margin-bottom: 40px;
+}
+
+/* Estilos da Página Inicial */
+
+.character-card p,
+.character-card h3 {
+  display: none; /* Oculta as descrições inicialmente */
+}
+
+.character-card.selected p,
+.character-card.selected h3 {
+  display: block; /* Exibe a descrição apenas para o personagem selecionado */
+}
+
+.home-section {
     display: flex;
-    flex-direction: column; /* Exibe os itens em coluna */
-    align-items: center; /* Centraliza os itens */
-    gap: 20px; /* Espaçamento entre os itens */
+    flex-direction: column;
+    gap: 60px;
+    padding-top: 80px;
+}
+
+.hero-content {
+    text-align: center; /* Centraliza o conteúdo principal */
+}
+
+.text-and-image {
+    display: flex; /* Alinha os itens em linha */
+    align-items: center; /* Alinha verticalmente ao centro */
+    justify-content: center; /* Centraliza horizontalmente */
+    gap: 20px; /* Espaçamento entre o texto e a imagem */
+    margin-top: 20px; /* Adiciona um espaçamento acima */
+}
+
+.text-content {
+    text-align: center; /* Alinha o texto à esquerda */
+}
+
+.typing-text {
+    font-size: 2rem; /* Ajusta o tamanho do título */
+    line-height: 1.5; /* Melhora o espaçamento entre linhas */
+}
+
+.mia-image {
+    width: 140px; /* Define a largura da imagem */
+    height: auto; /* Mantém a proporção da imagem */
+}
+
+@media (max-width: 768px) {
+    .typing-and-image {
+        flex-direction: column; /* Empilha os itens verticalmente em telas pequenas */
+        text-align: center;
+    }
+
+    .mia-image {
+        margin-top: 10px; /* Adiciona espaçamento acima da imagem */
+    }
+}
+
+.hero-content h1 {
+    font-size: 2.5rem;
+    color: var(--primary-dark);
+    margin-bottom: 20px;
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+}
+
+.season-display {
+    margin: 20px 0;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+}
+
+#season-name {
+    color: var(--accent2);
+    font-weight: bold;
+}
+
+.cta-buttons {
+    display: flex;
+    gap: 20px; /* Espaçamento entre os botões */
+    justify-content: center; /* Centraliza os botões */
+    margin-top: -100px; /* Espaço acima dos botões */
+    margin-bottom: 50px; /* Adiciona espaço abaixo dos botões */
+}
+
+footer {
+    margin-top: 50px; /* Espaço adicional entre o conteúdo e o rodapé */
+}
+
+.game-btn {
+    padding: 12px 25px;
+    background-color: var(--primary-dark);
+    color: var(--text-light);
+    border: none;
+    border-radius: 8px;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 0.8rem;
+    cursor: url('assets/arqueira.gif'), pointer;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.game-btn:hover {
+    background-color: var(--primary-light);
+    transform: translateY(-3px);
+}
+
+.intro-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: -100px;
+}
+
+.intro-card {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.intro-card:hover {
+    transform: translateY(-10px);
+}
+
+.intro-card h3 {
+    color: var(--primary-dark);
+    margin-bottom: 15px;
+    font-size: 1.5rem;
+}
+
+.intro-card p {
+    margin-bottom: 20px;
+}
+
+.card-link {
+    color: var(--primary-dark);
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.card-link:hover {
+    color: var(--primary-light);
+}
+
+/* Estilos da Página Sobre */
+.about-section {
+    padding-top: 80px;
+}
+
+.about-content {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 40px;
+}
+
+.about-text {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.about-text p {
+    margin-bottom: 15px;
+    line-height: 1.6;
+}
+
+.skills-section {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.skills-section h3 {
+    color: var(--primary-dark);
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+}
+
+.skill-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px;
+    border-radius: 8px;
+    background-color: rgba(138, 95, 219, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.skill-item:hover {
+    transform: translateY(-5px);
+    background-color: rgba(138, 95, 219, 0.2);
+}
+
+.skill-item i {
+    font-size: 2rem;
+    color: var(--primary-dark);
+    margin-bottom: 10px;
+}
+
+/* Estilos da Página de Portfólio */
+.portfolio-section {
+    padding-top: 80px;
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.project-card {
+    background-color: var(--bg-light);
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin-bottom: -550px;
+}
+
+.project-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+.project-img img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.project-info {
+    padding: 25px;
+}
+
+.project-info h3 {
+    font-size: 1.5rem;
+    color: var(--primary-dark);
+    margin-bottom: 10px;
+}
+
+.project-info p {
+    color: var(--text-dark);
+    margin-bottom: 15px;
+    line-height: 1.6;
+}
+
+.project-skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+.project-skills span {
+    background-color: var(--accent1);
+    color: var(--text-light);
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 0.8rem;
+}
+
+.project-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: var(--primary-dark);
+    color: var(--text-light);
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.project-btn:hover {
+    background-color: var(--primary-light);
+}
+
+/* Estilos da Página de Contato */
+.contact-section {
+    padding-top: 80px;
+}
+
+.contact-content {
+    display: flex;
+    justify-content: left;
+    margin-top: 30px; /* Adiciona espaço após o título */
+}
+
+.contact-info {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    max-width: 400px; /* Ajuste a largura conforme necessário */
+    margin-left: 0; /* Alinha à esquerda */
+    margin-top: 20px; /* Adiciona espaço entre o título e o card */
 }
 
 .contact-item {
-    background-color: #DFDBE1; /* Fundo claro */
-    border-radius: 10px; /* Cantos arredondados */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra suave */
-    padding: 20px;
-    width: 300px; /* Largura fixa */
+    display: flex;
+    align-items: left;
+    margin-bottom: 30px;
 }
 
-.contact-item h3 {
-    font-size: 18px;
-    margin-bottom: 10px;
+.contact-item i {
+    font-size: 2rem;
+    color: var(--primary-dark);
+    margin-right: 20px;
 }
 
-.contact-item p {
-    font-size: 16px;
+.contact-details h3 {
+    color: var(--primary-dark);
+    margin-bottom: 5px;
 }
 
-.contact-item a {
-    color: #6333e6; /* Azul para links */
-    text-decoration: none; /* Remove sublinhado */
+.contact-form {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
 }
 
-.contact-item a:hover {
-    color: #6333e6; /* Azul mais escuro no hover */
+.contact-form h3 {
+    color: var(--primary-dark);
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: var(--text-dark);
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 2px solid var(--primary-light);
+    border-radius: 5px;
+    font-family: 'Pixelify Sans', sans-serif;
+    color: var(--text-dark);
+}
+
+.form-group textarea {
+    resize: vertical;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--primary-dark);
+}
+
+/* Animações */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-on-scroll {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.animate-on-scroll.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Typing animation */
+.typing-text {
+    border-right: 0.15em solid var(--primary-dark);
+    white-space: nowrap;
+    overflow: hidden;
+    margin: 0 auto;
+    animation: blink-caret 0.75s step-end infinite;
+}
+
+@keyframes blink-caret {
+    from, to {
+        border-color: transparent;
+    }
+    50% {
+        border-color: var(--primary-dark);
+    }
 }
 
 /* Rodapé */
-.footer {
+.game-footer {
+    background-color: var(--bg-dark);
+    color: var(--text-light);
     text-align: center;
     padding: 20px;
-    background-color: #000; /* Fundo preto */
-    color: #fff; /* Texto branco */
+    font-family: 'Press Start 2P', cursive;
+    font-size: 0.7rem;
+    position: relative;
+    z-index: 10;
 }
 
-.footer p {
-    margin-bottom: 10px;
+.game-footer p {
+    margin: 5px 0;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .game-hud {
+        flex-direction: column;
+        align-items: center;
+        padding: 10px;
+    }
+    
+    .player-stats {
+        margin-bottom: 10px;
+        text-align: center;
+    }
+    
+    .menu-icons {
+        width: 100%;
+        justify-content: space-around;
+    }
+    
+    .menu-icon span {
+        font-size: 0.6rem;
+    }
+    
+    .hero-content h1 {
+        font-size: 1.8rem;
+    }
+    
+    .hero-content p {
+        font-size: 1rem;
+    }
+    
+    main {
+        padding-top: 120px;
+    }
+    
+    .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .about-content,
+    .contact-content {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Estilos para os ícones de redes sociais */
+.social-media {
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.social-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    font-size: 20px;
+    transition: all 0.3s ease;
+}
+
+.social-icon:hover {
+    transform: translateY(-3px);
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Cores específicas para cada rede social no hover */
+.social-icon .fa-instagram:hover {
+    color: #e1306c;
+}
+
+.social-icon .fa-linkedin-in:hover {
+    color: #0077b5;
+}
+
+.social-icon .fa-github:hover {
+    color: #6e5494;
 }
